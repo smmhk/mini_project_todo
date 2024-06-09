@@ -1,7 +1,7 @@
 def print_menu():
     print('To-Do List Application\n1. Add Task\n2. Remove Task\n3. View Tasks\n4. Exit')
 
-task_list = ['apple', 'banana', 'pear']
+task_list = []
 
 def add_task():
     task = input("Enter the task: ")
@@ -20,3 +20,4 @@ def view_task():
 
 def exit_app():
     print("Exiting the application. Goodbye!")
+
