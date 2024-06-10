@@ -11,7 +11,7 @@ def add_task():
 def remove_task():
     rv_task = input("Enter the task to remove: ")
     task_list.remove(rv_task)
-    print(f"'{rv_task} has beeb removed from the list.'")
+    print(f"'{rv_task} has been removed from the list.'")
 
 def view_task():
     print("To-Do List:")
@@ -20,4 +20,21 @@ def view_task():
 
 def exit_app():
     print("Exiting the application. Goodbye!")
+
+# make sure if the input is int
+def valid_int():
+    choice = input("Enter your choice: ")
+    if choice.isdigit() == False:
+        print("Invalid input! Please enter the appropriate number.")
+    else:
+        choice = int(choice)
+
+# make sure if the task to remove is in the list
+def valid_rv():
+    rv_task = input("Enter the task to remove: ")
+    if rv_task in task_list:
+        task_list.remove(rv_task)
+        print(f"'{rv_task}' has been removed from the list.")
+    else:
+        print("The task is not in the list.")
 
