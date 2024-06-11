@@ -4,9 +4,9 @@ def print_menu():
 
 task_list = []
 dict_task = {}
-dict_task_for_test = {'workout': {'priority': 'high', 'deadline': '2024-06-13', 'description': 'gym'},
-                      'study': {'priority': 'medium', 'deadline': '2024-10-10', 'description': 'python'}
-                      }
+dict_task = {'workout': {'priority': 'high', 'deadline': '2024-06-13', 'description': 'gym'},
+            'study': {'priority': 'medium', 'deadline': '2024-10-10', 'description': 'python'}
+             }
 task_sub_dict = {}
 
 
@@ -37,13 +37,15 @@ def remove_task():
     else:
         print("The task is not in the list.")
 
-# def new_remove_task():
-#     rm_task = input("Enter the task to remove: ")
-#     for k in range(len(dict_task_for_test.keys())):
-#         print(f"dict_task_for_test >> {k}")
-#         if dict_task_for_test[k] == rm_task:
-#             del dict_task_for_test[k]
-#         print(dict_task_for_test)
+def new_remove_task():
+    print("new_remove_task>>>>>>>")
+    rm_task = input("Enter the task to remove: ")
+
+    if rm_task in dict_task:
+        del dict_task[rm_task]
+    else:
+        print("task does not exist")
+    print(f"after deleting >>>>{dict_task}")
 
 def view_task():
     print("To-Do List:")
@@ -52,7 +54,7 @@ def view_task():
 
 def new_view_task():
     print("new_view_task :")
-    for k,v in dict_task_for_test.items():
+    for k,v in dict_task.items():
         print(f"{k} : {v['priority']} - {v['deadline']} - {v['description']}")
 
 
@@ -69,11 +71,11 @@ while True:
         add_task()
 
     elif choice == '2':
-        remove_task()
-        # new_remove_task()
+        # remove_task()
+        new_remove_task()
 
     elif choice == '3':
-        view_task()
+        # view_task()
         new_view_task()
 
     elif choice == '4':
