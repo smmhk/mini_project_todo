@@ -37,6 +37,13 @@ def remove_task():
     else:
         print("The task is not in the list.")
 
+# def new_remove_task():
+#     rm_task = input("Enter the task to remove: ")
+#     for k in range(len(dict_task_for_test.keys())):
+#         print(f"dict_task_for_test >> {k}")
+#         if dict_task_for_test[k] == rm_task:
+#             del dict_task_for_test[k]
+#         print(dict_task_for_test)
 
 def view_task():
     print("To-Do List:")
@@ -63,6 +70,7 @@ while True:
 
     elif choice == '2':
         remove_task()
+        # new_remove_task()
 
     elif choice == '3':
         view_task()
