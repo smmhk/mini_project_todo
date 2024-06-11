@@ -4,6 +4,10 @@ def print_menu():
 
 task_list = []
 dict_task = {}
+dict_task_for_test = {'workout': {'priority': 'high', 'deadline': '2024-06-13', 'description': 'gym'},
+                      'study': {'priority': 'medium', 'deadline': '2024-10-10', 'description': 'python'}
+                      }
+task_sub_dict = {}
 
 
 def add_task():
@@ -13,14 +17,14 @@ def add_task():
     deadline = input("enter the deadline (YYYY-MM-DD): ")
     description = input("enter the description : ")
 
+    # task_sub_dict = {}
     for i in task_list:
+        task_sub_dict["priority"] = priority
+        task_sub_dict["deadline"] = deadline
+        task_sub_dict["description"] = description
+        dict_task[i] = task_sub_dict
 
-        dict_task = {i: {}}
-        dict_task[i]["priority"] = priority
-        dict_task[i]["deadline"] = deadline
-        dict_task[i]["description"] = description
-        print(f"dict_task >> {dict_task}")
-        return dict_task
+    print(f"dict_task >> {dict_task}")
 
     print(f"'{task}' has been added to the list.")
 
@@ -39,6 +43,12 @@ def view_task():
     for i, list in enumerate(task_list, start=1):
         print(f"{i}. {list}")
 
+def new_view_task():
+    print("new_view_task :")
+    for k,v in dict_task_for_test.items():
+        print(f"{k} : {v['priority']} - {v['deadline']} - {v['description']}")
+
+
 
 def exit_app():
     print("Exiting the application. Goodbye!")
@@ -56,6 +66,7 @@ while True:
 
     elif choice == '3':
         view_task()
+        new_view_task()
 
     elif choice == '4':
         exit_app()
