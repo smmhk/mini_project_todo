@@ -1,14 +1,48 @@
+from datetime import datetime
+
 def print_menu():
     print('To-Do List Application\n1. Add Task\n2. Remove Task\n3. View Tasks\n4. Exit')
 
 
 task_list = []
 dict_task = {}
-dict_task = {'workout': {'priority': 'high', 'deadline': '2024-06-13', 'description': 'gym'},
-            'study': {'priority': 'medium', 'deadline': '2024-10-10', 'description': 'python'}
-             }
-task_sub_dict = {}
+# dict_task = {'workout': {'priority': 'high', 'deadline': '2024-06-13', 'description': 'gym'},
+#             'study': {'priority': 'medium', 'deadline': '2024-10-10', 'description': 'python'}
+#              }
 
+
+def new_add_task():
+    while True:
+        task = input("Enter the task: ")
+        if task == "":
+            print("Please enter a task.")
+        else:
+            break
+    while True:
+        priority = input("enter the priority (high, medium, low): ")
+        if priority not in ("high", "medium", "low"):
+            print("Invalid input! Please enter high, medium, or low.")
+        else:
+            break
+    while True:
+        deadline = input("enter the deadline (YYYY-MM-DD): ")
+        try:
+            datetime.fromisoformat(deadline)
+            break
+        except ValueError:
+            print("Incorrect date format. It should be YYYY-MM-DD.")
+
+    description = input("enter the description : ")
+
+    task_sub_dict = {}
+    task_sub_dict["priority"] = priority
+    task_sub_dict["deadline"] = deadline
+    task_sub_dict["description"] = description
+
+    dict_task[task] = task_sub_dict
+
+    print(f"dict_task >> {dict_task}")
+    print(f"'{task}' has been added to the list.")
 
 def add_task():
     task = input("Enter the task: ")
@@ -17,7 +51,7 @@ def add_task():
     deadline = input("enter the deadline (YYYY-MM-DD): ")
     description = input("enter the description : ")
 
-    # task_sub_dict = {}
+    task_sub_dict = {}
     for i in task_list:
         task_sub_dict["priority"] = priority
         task_sub_dict["deadline"] = deadline
@@ -38,14 +72,13 @@ def remove_task():
         print("The task is not in the list.")
 
 def new_remove_task():
-    print("new_remove_task>>>>>>>")
     rm_task = input("Enter the task to remove: ")
 
     if rm_task in dict_task:
         del dict_task[rm_task]
     else:
         print("task does not exist")
-    print(f"after deleting >>>>{dict_task}")
+    print(f"dict_task >> {dict_task}")
 
 def view_task():
     print("To-Do List:")
@@ -68,7 +101,8 @@ while True:
     print_menu()
     choice = input("Enter your choice: ")
     if choice == '1':
-        add_task()
+        # add_task()
+        new_add_task()
 
     elif choice == '2':
         # remove_task()
