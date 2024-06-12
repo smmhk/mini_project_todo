@@ -31,7 +31,6 @@ def exit_app():
 
 
 while True:
-    print()
     print_menu()
     choice = input("Enter your choice: ")
     if choice == '1':
@@ -49,3 +48,4 @@ while True:
 
     else:
         print("Invalid input! Please enter the appropriate number.")
+    print()
